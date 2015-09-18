@@ -1,0 +1,12 @@
+{
+  "name": "Datepikcer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "public/index.html",
+  "dependencies": {
+    "connect": "^3.4.0",
+    "serve-static": "^1.10.0"
+  },
+  "author": "Sakari Ruoho",
+  "license": "ISC"
+}

@@ -1,0 +1,113 @@
+$ws-datepicker-width: 580px;
+
+.datepicker { width: $ws-datepicker-width; }
+
+.datepicker>div {
+  width: 100%;
+}
+
+.datepicker > div > table {
+  width: 100%;
+}
+
+.datepicker>div>table>tbody>tr>td>span {
+  width: 25%;
+  min-height: 149px;
+  line-height: 149px;
+  margin: 0px;
+  position: relative;
+  //margin-right: 1px;
+  //margin-bottom: 1px;
+  background-color: white;
+  border-radius: 0px;
+  border-color: #E3EBEE;
+  border-right: 1px solid #E3EBEE;
+  border-bottom: 1px solid #E3EBEE;
+  display:table-cell;
+  vertical-align:middle;
+}
+.datepicker table tr td span.active.active {
+  color: inherit;
+  background-color: #FFF;
+  border: none;
+}
+
+.datepicker table tr td span.active.active:hover {
+  background-color: #FFF;
+  color: inherit;
+}
+
+.datepicker table tr td span.active.active:before {
+  content: '';
+  /* display: none; */
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  border: 2px solid #00A9EC;
+}
+
+.datepicker table tr td span.active {
+  background-color: #FFF;
+  border: none;
+}
+
+.datepicker-days table tr td {
+  width: (100% / 7); // 100/7 = %14.285714285%;
+  height: $ws-datepicker-width / 7;
+  line-height: $ws-datepicker-width / 7;
+  vertical-align: middle;
+  border-radius: 0px;
+  margin: 0px;
+  margin-right: 1px;
+  margin-bottom: 1px;
+  border: 1px solid #E3EBEE;
+  background-color: #FFF;
+  position: relative;
+}
+
+.datepicker table tr td.day:hover {
+  background-color: #FFF;
+}
+
+.datepicker-days table tr td:before {
+  content: '';
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  border: 2px solid #FFF;
+}
+
+
+.datepicker-days table tr td:hover:before {
+  border-color: #00A9EC;
+  background-color: transparent;
+}
+
+
+.datepicker-days table {
+  margin-left: -1px;
+}
+
+.table-condensed>tbody>tr>td {
+  padding: 0px;
+}
+
+
+.datepicker>div>table>tbody {
+  background-color: #ECF4F6;
+  border-top: 1px solid #ECF4F6;
+  padding-top: 1px;
+}
+
+.datepicker table tr td span.old, .datepicker table tr td span.new {
+  background-color: #E3EBEE;
+  border-color: #E3EBEE;
+}
+
+.datepicker-dropdown {
+  padding: 1px;
+}

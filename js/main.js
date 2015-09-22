@@ -1,10 +1,11 @@
 /**
  * Created by sakariruoho on 9/17/15.
  */
-$('#datepickah').datepicker({startView: 'decade', format: 'dd/DD/YYYY'})
+$('#datepickah').datepicker({startView: 'decade', orientation: 'right', forceParse: false})
     .on('changeDate', function (ev) {
         console.log("date changed" + pad(ev.date.getDate()));
         document.getElementById('date').setAttribute('value', pad(ev.date.getDate()));
+        $(this).datepicker('hide');
     })
     .on('changeYear', function (ev) {
         console.log("year changed: " + ev.date.getFullYear());
@@ -12,7 +13,7 @@ $('#datepickah').datepicker({startView: 'decade', format: 'dd/DD/YYYY'})
     })
     .on('changeMonth', function (ev) {
         console.log("month changed: " + pad(ev.date.getMonth()));
-        document.getElementById('month').setAttribute('value', pad(ev.date.getMonth()));
+        document.getElementById('month').setAttribute('value', pad((ev.date.getMonth() + 1)));
     }
 );
 

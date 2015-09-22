@@ -1,4 +1,6 @@
 $ws-datepicker-width: 580px;
+$ws-datepicker-active-blue : #00A9EC;
+$ws-datepicker-hover-grey: #EEEEEE;
 
 .datepicker { width: $ws-datepicker-width; }
 
@@ -8,6 +10,10 @@ $ws-datepicker-width: 580px;
 
 .datepicker > div > table {
   width: 100%;
+}
+
+.datepicker table thead tr th {
+    height: 80px;
 }
 
 .datepicker>div>table>tbody>tr>td>span {
@@ -27,7 +33,7 @@ $ws-datepicker-width: 580px;
   vertical-align:middle;
 }
 .datepicker table tr td span.active.active {
-  color: inherit;
+  color: $ws-datepicker-active-blue;
   background-color: #FFF;
   border: none;
 }
@@ -45,7 +51,11 @@ $ws-datepicker-width: 580px;
   right: 0px;
   left: 0px;
   bottom: 0px;
-  border: 2px solid #00A9EC;
+  border: 2px solid $ws-datepicker-active-blue;
+}
+
+.datepicker table tr td span:hover {
+  background-color: $ws-datepicker-hover-grey;
 }
 
 .datepicker table tr td span.active {
@@ -67,25 +77,33 @@ $ws-datepicker-width: 580px;
   position: relative;
 }
 
-.datepicker table tr td.day:hover {
-  background-color: #FFF;
+.datepicker table tr td:hover {
+  background-color: $ws-datepicker-hover-grey;
 }
 
-.datepicker-days table tr td:before {
+.datepicker table tr td.active.active {
+  background-color: #FFF;
+  border: none;
+  color: $ws-datepicker-active-blue;
+}
+
+.datepicker table tr td.active.active:hover {
+  background-color: transparent;
+  color: $ws-datepicker-active-blue;
+}
+
+.datepicker table tr td.active.active:before {
   content: '';
   position: absolute;
   top: 0px;
   right: 0px;
   left: 0px;
   bottom: 0px;
-  border: 2px solid #FFF;
+  border: 2px solid $ws-datepicker-active-blue;
 }
 
+th { font-weight: normal; }
 
-.datepicker-days table tr td:hover:before {
-  border-color: #00A9EC;
-  background-color: transparent;
-}
 
 
 .datepicker-days table {
@@ -98,7 +116,6 @@ $ws-datepicker-width: 580px;
 
 
 .datepicker>div>table>tbody {
-  background-color: #ECF4F6;
   border-top: 1px solid #ECF4F6;
   padding-top: 1px;
 }

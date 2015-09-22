@@ -7,6 +7,9 @@
 .datepicker > div > table {
   width: 100%; }
 
+.datepicker table thead tr th {
+  height: 80px; }
+
 .datepicker > div > table > tbody > tr > td > span {
   width: 25%;
   min-height: 149px;
@@ -22,7 +25,7 @@
   vertical-align: middle; }
 
 .datepicker table tr td span.active.active {
-  color: inherit;
+  color: #00A9EC;
   background-color: #FFF;
   border: none; }
 
@@ -39,6 +42,9 @@
   left: 0px;
   bottom: 0px;
   border: 2px solid #00A9EC; }
+
+.datepicker table tr td span:hover {
+  background-color: #EEEEEE; }
 
 .datepicker table tr td span.active {
   background-color: #FFF;
@@ -57,21 +63,29 @@
   background-color: #FFF;
   position: relative; }
 
-.datepicker table tr td.day:hover {
-  background-color: #FFF; }
+.datepicker table tr td:hover {
+  background-color: #EEEEEE; }
 
-.datepicker-days table tr td:before {
+.datepicker table tr td.active.active {
+  background-color: #FFF;
+  border: none;
+  color: #00A9EC; }
+
+.datepicker table tr td.active.active:hover {
+  background-color: transparent;
+  color: #00A9EC; }
+
+.datepicker table tr td.active.active:before {
   content: '';
   position: absolute;
   top: 0px;
   right: 0px;
   left: 0px;
   bottom: 0px;
-  border: 2px solid #FFF; }
+  border: 2px solid #00A9EC; }
 
-.datepicker-days table tr td:hover:before {
-  border-color: #00A9EC;
-  background-color: transparent; }
+th {
+  font-weight: normal; }
 
 .datepicker-days table {
   margin-left: -1px; }
@@ -80,7 +94,6 @@
   padding: 0px; }
 
 .datepicker > div > table > tbody {
-  background-color: #ECF4F6;
   border-top: 1px solid #ECF4F6;
   padding-top: 1px; }
 

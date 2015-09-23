@@ -1,6 +1,15 @@
 $ws-datepicker-width: 580px;
 $ws-datepicker-active-blue : #00A9EC;
 $ws-datepicker-hover-grey: #EEEEEE;
+$ws-datepicker-notinrange: #E3EBEE;
+$ws-datepicker-date-proportion: 74 / 84;
+$ws-chevron-height: 40%; // Use this number to calculate the portion in a container
+$ws-chevron-side: $ws-chevron-height / 2;
+$ws-chevron-adjust: $ws-chevron-height / 2;
+$ws-table-head-height: 80px;
+$ws-chevron-offset: $ws-chevron-side / $ws-chevron-height;
+
+// proportion in day view 84 /74
 
 .datepicker { width: $ws-datepicker-width; }
 
@@ -13,7 +22,8 @@ $ws-datepicker-hover-grey: #EEEEEE;
 }
 
 .datepicker table thead tr th {
-    height: 80px;
+    height: $ws-table-head-height;
+
 }
 
 .datepicker>div>table>tbody>tr>td>span {
@@ -65,8 +75,8 @@ $ws-datepicker-hover-grey: #EEEEEE;
 
 .datepicker-days table tr td {
   width: (100% / 7); // 100/7 = %14.285714285%;
-  height: $ws-datepicker-width / 7;
-  line-height: $ws-datepicker-width / 7;
+  height: $ws-datepicker-width / 7 * $ws-datepicker-date-proportion;
+  line-height: $ws-datepicker-width / 7 * $ws-datepicker-date-proportion;// 0.88095238;
   vertical-align: middle;
   border-radius: 0px;
   margin: 0px;
@@ -121,10 +131,47 @@ th { font-weight: normal; }
 }
 
 .datepicker table tr td span.old, .datepicker table tr td span.new {
-  background-color: #E3EBEE;
-  border-color: #E3EBEE;
+  background-color: $ws-datepicker-notinrange;
+  border-color: $ws-datepicker-notinrange;
 }
 
 .datepicker-dropdown {
   padding: 1px;
+}
+
+
+.chevron {
+  position: relative;
+}
+
+.chevron:before {
+  content: '';
+  position: absolute;
+  top: 50% - $ws-chevron-side;
+  right: $ws-chevron-offset;
+  height: $ws-chevron-side;
+  width: 1px;
+  background: red;
+  -webkit-transform: skew(-45deg, 0deg);
+  -moz-transform: skew(-45deg, 0deg);
+  -ms-transform: skew(-45deg, 0deg);
+  -o-transform: skew(-45deg, 0deg);
+  transform: skew(-45deg, 0deg);
+
+}
+.chevron:after {
+  content: '';
+  position: absolute;
+  bottom: 50% - $ws-chevron-side;
+  right: $ws-chevron-offset;
+  height: $ws-chevron-side;
+  width: 1px;
+  background: red;
+
+  -webkit-transform: skew(45deg, 0deg);
+  -moz-transform: skew(45deg, 0deg);
+  -ms-transform: skew(45deg, 0deg);
+  -o-transform: skew(45deg, 0deg);
+  transform: skew(45deg, 0deg);
+
 }

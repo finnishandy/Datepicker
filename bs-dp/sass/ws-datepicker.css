@@ -52,8 +52,8 @@
 
 .datepicker-days table tr td {
   width: 14.28571%;
-  height: 82.85714px;
-  line-height: 82.85714px;
+  height: 72.9932px;
+  line-height: 72.9932px;
   vertical-align: middle;
   border-radius: 0px;
   margin: 0px;
@@ -103,5 +103,36 @@ th {
 
 .datepicker-dropdown {
   padding: 1px; }
+
+.chevron {
+  position: relative; }
+
+.chevron:before {
+  content: '';
+  position: absolute;
+  top: 30%;
+  right: 0.5;
+  height: 20%;
+  width: 1px;
+  background: red;
+  -webkit-transform: skew(-45deg, 0deg);
+  -moz-transform: skew(-45deg, 0deg);
+  -ms-transform: skew(-45deg, 0deg);
+  -o-transform: skew(-45deg, deg);
+  transform: skew(-45deg, 0deg); }
+
+.chevron:after {
+  content: '';
+  position: absolute;
+  bottom: 30%;
+  right: 0.5;
+  height: 20%;
+  width: 1px;
+  background: red;
+  -webkit-transform: skew(45deg, 0deg);
+  -moz-transform: skew(45deg, 0deg);
+  -ms-transform: skew(45deg, 0deg);
+  -o-transform: skew(45deg, 0deg);
+  transform: skew(45deg, 0deg); }
 
 /*# sourceMappingURL=ws-datepicker.css.map */

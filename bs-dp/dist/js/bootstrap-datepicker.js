@@ -920,12 +920,14 @@
 			var prevMonth = UTCDate(year, month-1, 28),
 				day = DPGlobal.getDaysInMonth(prevMonth.getUTCFullYear(), prevMonth.getUTCMonth());
 			prevMonth.setUTCDate(day);
-			prevMonth.setUTCDate(day - (prevMonth.getUTCDay() - this.o.weekStart + 7)%7);
+			var x = prevMonth.getUTCDay(), z = this.o.weekStart, sum = day - (x - z + 7)%7;
+			prevMonth.setUTCDate(day - (prevMonth.getUTCDay() - this.o.weekStart + 7)%7); // TODO: this seems to be the calculation to modify
+			//prevMonth.setUTCDate(day - 2);
 			var nextMonth = new Date(prevMonth);
 			if (prevMonth.getUTCFullYear() < 100){
         nextMonth.setUTCFullYear(prevMonth.getUTCFullYear());
       }
-			nextMonth.setUTCDate(nextMonth.getUTCDate() + 42);
+			nextMonth.setUTCDate(nextMonth.getUTCDate() + 42); // TODO: here's the day view columns
 			nextMonth = nextMonth.valueOf();
 			var html = [];
 			var clsName;
@@ -1833,9 +1835,9 @@
 			                '<th colspan="7" class="datepicker-title"></th>'+
 			              '</tr>'+
 							'<tr>'+
-								'<th class="prev"></th>'+ // MOD SR MY-VW: '<th class="prev">&#171;</th>'+
+								'<th class="prev chevron"></th>'+ // MOD SR MY-VW: '<th class="prev">&#171;</th>'+
 								'<th colspan="5" class="datepicker-switch"></th>'+
-								'<th class="next"></th>'+ // MOD SR MY-VW: '<th class="next">&#187;</th>'+
+								'<th class="next chevron"></th>'+ // MOD SR MY-VW: '<th class="next">&#187;</th>'+
 							'</tr>'+
 						'</thead>',
 		contTemplate: '<tbody><tr><td colspan="7"></td></tr></tbody>',

@@ -1,0 +1,12 @@
+@mixin ws-skew($x-degree: 0deg, $y-degree: 0deg) {
+  -webkit-transform: skew($x-degree, $y-degree);
+  -moz-transform: skew($x-degree, $y-degree);
+  -ms-transform: skew($x-degree, $y-degree);
+  -o-transform: skew($x-degree, $y-degree);
+  transform: skew($x-degree, $y-degree);
+}
+
+@mixin ws-chevron-box-shadow($shadow: none) {
+  -webkit-box-shadow: $shadow;
+  box-shadow: $shadow;
+}

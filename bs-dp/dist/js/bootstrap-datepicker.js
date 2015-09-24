@@ -1835,9 +1835,9 @@
 			                '<th colspan="7" class="datepicker-title"></th>'+
 			              '</tr>'+
 							'<tr>'+
-								'<th class="prev chevron"></th>'+ // MOD SR MY-VW: '<th class="prev">&#171;</th>'+
+								'<th class="prev chevron left"></th>'+ // MOD SR MY-VW: '<th class="prev">&#171;</th>'+
 								'<th colspan="5" class="datepicker-switch"></th>'+
-								'<th class="next chevron"></th>'+ // MOD SR MY-VW: '<th class="next">&#187;</th>'+
+								'<th class="next chevron right"></th>'+ // MOD SR MY-VW: '<th class="next">&#187;</th>'+
 							'</tr>'+
 						'</thead>',
 		contTemplate: '<tbody><tr><td colspan="7"></td></tr></tbody>',

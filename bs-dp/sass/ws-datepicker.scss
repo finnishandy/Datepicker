@@ -1,20 +1,37 @@
+@import "mixin";
+
 $ws-datepicker-width: 580px;
 $ws-datepicker-active-blue : #00A9EC;
 $ws-datepicker-hover-grey: #EEEEEE;
 $ws-datepicker-notinrange: #E3EBEE;
 $ws-datepicker-date-proportion: 74 / 84;
-$ws-chevron-height: 40%; // Use this number to calculate the portion in a container
+$ws-chevron-height: 30%; // Use this number to calculate the portion in a container
 $ws-chevron-side: $ws-chevron-height / 2;
-$ws-chevron-adjust: $ws-chevron-height / 2;
 $ws-table-head-height: 80px;
+$ws-chevron-width: 2px;
+$ws-chevron-color: $ws-datepicker-active-blue;
 $ws-chevron-offset: $ws-chevron-side / $ws-chevron-height;
 
 // proportion in day view 84 /74
 
-.datepicker { width: $ws-datepicker-width; }
+.datepicker {
+  width: $ws-datepicker-width;
+  overflow: hidden;
+
+}
+
+.datepicker-dropdown {
+  padding: 0px;
+}
+
+.dropdown-menu {
+  @include ws-chevron-box-shadow();
+  border: none;
+}
 
 .datepicker>div {
-  width: 100%;
+  //width: 100%;
+  width: $ws-datepicker-width;
 }
 
 .datepicker > div > table {
@@ -150,28 +167,27 @@ th { font-weight: normal; }
   top: 50% - $ws-chevron-side;
   right: $ws-chevron-offset;
   height: $ws-chevron-side;
-  width: 1px;
-  background: red;
-  -webkit-transform: skew(-45deg, 0deg);
-  -moz-transform: skew(-45deg, 0deg);
-  -ms-transform: skew(-45deg, 0deg);
-  -o-transform: skew(-45deg, 0deg);
-  transform: skew(-45deg, 0deg);
-
+  width: $ws-chevron-width;
+  background: $ws-chevron-color;
 }
+
+.chevron.left:before, .chevron.right:after {
+  @include ws-skew(-45deg);
+}
+
+.chevron.right:before, .chevron.left:after {
+  @include ws-skew(45deg);
+}
+
+
+
 .chevron:after {
   content: '';
   position: absolute;
   bottom: 50% - $ws-chevron-side;
   right: $ws-chevron-offset;
   height: $ws-chevron-side;
-  width: 1px;
-  background: red;
-
-  -webkit-transform: skew(45deg, 0deg);
-  -moz-transform: skew(45deg, 0deg);
-  -ms-transform: skew(45deg, 0deg);
-  -o-transform: skew(45deg, 0deg);
-  transform: skew(45deg, 0deg);
-
+  width: $ws-chevron-width;
+  background: $ws-chevron-color;
+  //@include ws-skew(45deg);
 }

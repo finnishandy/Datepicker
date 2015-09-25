@@ -812,7 +812,8 @@
 				html += '<th class="cw">&#160;</th>';
 			}
 			while (dowCnt < this.o.weekStart + 7){
-				html += '<th class="dow">'+dates[this.o.language].daysMin[(dowCnt++)%7]+'</th>';
+				//html += '<th class="dow">'+dates[this.o.language].daysMin[(dowCnt++)%7]+'</th>';
+				html += '<th class="dow">'+dates[this.o.language].daysShort[(dowCnt++)%7]+'</th>'; // MOD: SR [ MY-VW ]
 			}
 			html += '</tr>';
 			this.picker.find('.datepicker-days thead').append(html);
@@ -919,12 +920,14 @@
 			var prevMonth = UTCDate(year, month-1, 28),
 				day = DPGlobal.getDaysInMonth(prevMonth.getUTCFullYear(), prevMonth.getUTCMonth());
 			prevMonth.setUTCDate(day);
-			prevMonth.setUTCDate(day - (prevMonth.getUTCDay() - this.o.weekStart + 7)%7);
+			var x = prevMonth.getUTCDay(), z = this.o.weekStart, sum = day - (x - z + 7)%7;
+			prevMonth.setUTCDate(day - (prevMonth.getUTCDay() - this.o.weekStart + 7)%7); // TODO: this seems to be the calculation to modify
+			//prevMonth.setUTCDate(day - 2);
 			var nextMonth = new Date(prevMonth);
 			if (prevMonth.getUTCFullYear() < 100){
         nextMonth.setUTCFullYear(prevMonth.getUTCFullYear());
       }
-			nextMonth.setUTCDate(nextMonth.getUTCDate() + 42);
+			nextMonth.setUTCDate(nextMonth.getUTCDate() + 42); // TODO: here's the day view columns
 			nextMonth = nextMonth.valueOf();
 			var html = [];
 			var clsName;
@@ -1101,17 +1104,17 @@
 			e.stopPropagation();
 			var target = $(e.target).closest('span, td, th'),
 				year, month, day;
-			console.log("target: " + JSON.stringify(target));
+			//console.log("click: " + target[0].nodeName.toLowerCase);
 			if (target.length === 1){
 				switch (target[0].nodeName.toLowerCase()){
 					case 'th':
-						switch (target[0].className){
+						switch (target[0].className.split(' ')[0]){ // MOD SR .split()[0] TODO: hasClass?
 							case 'datepicker-switch':
 								this.showMode(1);
 								break;
 							case 'prev':
 							case 'next':
-								var dir = DPGlobal.modes[this.viewMode].navStep * (target[0].className === 'prev' ? -1 : 1);
+								var dir = DPGlobal.modes[this.viewMode].navStep * (target[0].className.split(' ')[0] === 'prev' ? -1 : 1);
 								switch (this.viewMode){
 									case 0:
 										this.viewDate = this.moveMonth(this.viewDate, dir);
@@ -1833,9 +1836,9 @@
 			                '<th colspan="7" class="datepicker-title"></th>'+
 			              '</tr>'+
 							'<tr>'+
-								'<th class="prev">&#171;</th>'+
+								'<th class="prev chevron"></th>'+ // MOD SR MY-VW: '<th class="prev">&#171;</th>'+
 								'<th colspan="5" class="datepicker-switch"></th>'+
-								'<th class="next">&#187;</th>'+
+								'<th class="next chevron"></th>'+ // MOD SR MY-VW: '<th class="next">&#187;</th>'+
 							'</tr>'+
 						'</thead>',
 		contTemplate: '<tbody><tr><td colspan="7"></td></tr></tbody>',

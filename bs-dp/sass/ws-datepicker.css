@@ -7,7 +7,8 @@ th {
 .datepicker {
   width: 587px;
   border-radius: 0px;
-  border-top: 1px solid #E3EBEE !important; }
+  border-top: 1px solid #E3EBEE !important;
+  margin-top: 20px; }
   .datepicker > div {
     width: 587px; }
   .datepicker > div > table {
@@ -52,6 +53,25 @@ th {
     border: none; }
   .datepicker > div td > span:nth-child(4), .datepicker > div td > span:nth-child(8), .datepicker > div td > span:nth-child(12), .datepicker > div td > span:nth-child(16) {
     border-right: 0px; }
+  .datepicker table tr td:hover {
+    background-color: #EEEEEE; }
+  .datepicker table tr td.active.active {
+    background-color: #FFF;
+    border: none;
+    color: #00A9EC; }
+  .datepicker table tr td.active.active:hover {
+    background-color: transparent;
+    color: #00A9EC; }
+  .datepicker table tr td.active.active:before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    border: 2px solid #00A9EC; }
+  .datepicker .datepicker-switch:hover, .datepicker .prev:hover, .datepicker .next:hover {
+    background-color: inherit; }
 
 .datepicker-dropdown {
   padding: 0px; }
@@ -71,47 +91,31 @@ th {
   border: 1px solid #E3EBEE;
   background-color: #FFF;
   position: relative; }
-
 .datepicker-days table tr td:nth-child(7) {
   border-right: 0px; }
-
-.datepicker table tr td:hover {
-  background-color: #EEEEEE; }
-
-.datepicker table tr td.active.active {
-  background-color: #FFF;
-  border: none;
-  color: #00A9EC; }
-
-.datepicker table tr td.active.active:hover {
-  background-color: transparent;
-  color: #00A9EC; }
-
-.datepicker table tr td.active.active:before {
-  content: '';
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  left: 0px;
-  bottom: 0px;
-  border: 2px solid #00A9EC; }
 
 .table-condensed > tbody > tr > td {
   padding: 0px; }
 
 .chevron-common, .chevron:after, .chevron:before {
+  pointer-events: none;
+  z-index: 1;
   content: '';
   position: absolute;
   height: 15%;
   width: 2px;
   background: #00A9EC; }
 
+.datepicker-switch {
+  z-index: 2; }
+
 /**
  * CHEVRON
  **/
 .chevron {
   position: relative;
-  width: 83.85714px; }
+  width: 83.85714px;
+  z-index: 2; }
   .chevron:after {
     bottom: 35%; }
   .chevron:before {
@@ -120,13 +124,13 @@ th {
     left: 25px; }
   .chevron.next:after, .chevron.next:before {
     right: 25px; }
-  .chevron.left:before, .chevron.right:after {
+  .chevron.prev:before, .chevron.next:after {
     -webkit-transform: skew(-45deg, 0deg);
     -moz-transform: skew(-45deg, 0deg);
     -ms-transform: skew(-45deg, 0deg);
     -o-transform: skew(-45deg, 0deg);
     transform: skew(-45deg, 0deg); }
-  .chevron.right:before, .chevron.left:after {
+  .chevron.next:before, .chevron.prev:after {
     -webkit-transform: skew(45deg, 0deg);
     -moz-transform: skew(45deg, 0deg);
     -ms-transform: skew(45deg, 0deg);

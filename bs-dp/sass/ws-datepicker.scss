@@ -24,6 +24,7 @@ th { font-weight: normal; }
   width: $ws-datepicker-width;
   border-radius: 0px;
   border-top: 1px solid #E3EBEE !important;
+  margin-top: 20px; //lower the container
 
   &>div {
     width: $ws-datepicker-width;
@@ -94,6 +95,35 @@ th { font-weight: normal; }
   &>div td>span:nth-child(16) {
     border-right: 0px;
   }
+
+  & table tr td:hover {
+    background-color: $ws-datepicker-hover-grey;
+  }
+  & table tr td.active.active {
+    background-color: #FFF;
+    border: none;
+    color: $ws-datepicker-active-blue;
+  }
+
+  & table tr td.active.active:hover {
+    background-color: transparent;
+    color: $ws-datepicker-active-blue;
+  }
+
+  & table tr td.active.active:before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    border: 2px solid $ws-datepicker-active-blue;
+  }
+  & .datepicker-switch:hover, & .prev:hover, & .next:hover {
+    background-color: inherit;
+  }
+
+
 }
 
 .datepicker-dropdown {
@@ -106,50 +136,25 @@ th { font-weight: normal; }
 }
 
 
+.datepicker-days {
+  & table tr td {
+    width: (100% / 7); // 100/7 = %14.285714285%;
+    height: $ws-datepicker-width / 7 * $ws-datepicker-date-proportion;
+    line-height: $ws-datepicker-width / 7 * $ws-datepicker-date-proportion; // 0.88095238;
+    vertical-align: middle;
+    border-radius: 0px;
+    margin: 0px;
+    border: 1px solid #E3EBEE;
+    background-color: #FFF;
+    position: relative;
+  }
+
+  & table tr td:nth-child(7) {
+    border-right: 0px;
+  }
 
 
-.datepicker-days table tr td {
-  width: (100% / 7); // 100/7 = %14.285714285%;
-  height: $ws-datepicker-width / 7 * $ws-datepicker-date-proportion;
-  line-height: $ws-datepicker-width / 7 * $ws-datepicker-date-proportion;// 0.88095238;
-  vertical-align: middle;
-  border-radius: 0px;
-  margin: 0px;
-  border: 1px solid #E3EBEE;
-  background-color: #FFF;
-  position: relative;
 }
-
-.datepicker-days table tr td:nth-child(7) {
-  border-right: 0px;
-}
-
-.datepicker table tr td:hover {
-  background-color: $ws-datepicker-hover-grey;
-}
-
-.datepicker table tr td.active.active {
-  background-color: #FFF;
-  border: none;
-  color: $ws-datepicker-active-blue;
-}
-
-.datepicker table tr td.active.active:hover {
-  background-color: transparent;
-  color: $ws-datepicker-active-blue;
-}
-
-.datepicker table tr td.active.active:before {
-  content: '';
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  left: 0px;
-  bottom: 0px;
-  border: 2px solid $ws-datepicker-active-blue;
-}
-
-
 
 
 .table-condensed>tbody>tr>td {
@@ -159,6 +164,8 @@ th { font-weight: normal; }
 
 
 .chevron-common {
+  pointer-events: none; // don't want to catch events
+  z-index: 1;
   content: '';
   position: absolute;
   height: $ws-chevron-side;
@@ -166,59 +173,67 @@ th { font-weight: normal; }
   background: $ws-chevron-color;
 }
 
-/**
- * CHEVRON
- **/
-.chevron {
-  position: relative;
-  width: $ws-datepicker-width / 7;
 
-  &:after {
-    @extend .chevron-common;
-    bottom: 50% - $ws-chevron-side;
-  }
-
-  &:before {
-    @extend .chevron-common;
-    top: 50% - $ws-chevron-side;
-  }
-
-  &.prev:before, &.prev:after {
-    left: 25px;
-  }
-
-  &.next:after, &.next:before {
-    right: 25px;
-  }
-
-  &.left:before, &.right:after {
-    @include ws-skew(-45deg);
-  }
-
-  &.right:before, &.left:after {
-    @include ws-skew(45deg);
-  }
+.datepicker-switch {
+  z-index: 2;
 }
 
-.datepicker-dropdown {
+  /**
+   * CHEVRON
+   **/
+  .chevron {
+    position: relative;
+    width: $ws-datepicker-width / 7;
+    z-index: 2;
 
-  &:after {
-    border-left: 9px solid transparent;
-    border-right: 9px solid transparent;
-    border-bottom: 9px solid #fff;
+
+    &:after {
+      @extend .chevron-common;
+      bottom: 50% - $ws-chevron-side;
+    }
+
+    &:before {
+      @extend .chevron-common;
+      top: 50% - $ws-chevron-side;
+    }
+
+    &.prev:before, &.prev:after {
+      left: 25px;
+    }
+
+    &.next:after, &.next:before {
+      right: 25px;
+    }
+
+    &.prev:before, &.next:after {
+      @include ws-skew(-45deg);
+    }
+
+    &.next:before, &.prev:after {
+      @include ws-skew(45deg);
+    }
   }
 
-  &:before {
-    border-left: 10px solid transparent;
-    border-right: 10px solid transparent;
-    border-bottom: 10px solid #ccc;
+  .datepicker-dropdown {
+
+    &:after {
+      border-left: 9px solid transparent;
+      border-right: 9px solid transparent;
+      border-bottom: 9px solid #fff;
+    }
+
+    &:before {
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 10px solid #ccc;
+    }
+
+    &.datepicker-orient-bottom:after {
+      top: -9px;
+    }
+
+    &.datepicker-orient-bottom:before {
+      top: -10px;
+    }
   }
 
-  &.datepicker-orient-bottom:after {
-    top: -9px;
-  }
-
-  &.datepicker-orient-bottom:before {
-    top: -10px;
-  }
-}

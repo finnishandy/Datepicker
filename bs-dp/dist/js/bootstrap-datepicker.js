@@ -1104,6 +1104,7 @@
 			e.stopPropagation();
 			var target = $(e.target).closest('span, td, th'),
 				year, month, day;
+			console.log("click: " + target.nodeName.toLowerCase);
 			if (target.length === 1){
 				switch (target[0].nodeName.toLowerCase()){
 					case 'th':
@@ -1835,9 +1836,9 @@
 			                '<th colspan="7" class="datepicker-title"></th>'+
 			              '</tr>'+
 							'<tr>'+
-								'<th class="prev chevron left"></th>'+ // MOD SR MY-VW: '<th class="prev">&#171;</th>'+
+								'<th class="prev chevron">&lt;</th>'+ // MOD SR MY-VW: '<th class="prev">&#171;</th>'+
 								'<th colspan="5" class="datepicker-switch"></th>'+
-								'<th class="next chevron right"></th>'+ // MOD SR MY-VW: '<th class="next">&#187;</th>'+
+								'<th class="next chevron">$gt;</th>'+ // MOD SR MY-VW: '<th class="next">&#187;</th>'+
 							'</tr>'+
 						'</thead>',
 		contTemplate: '<tbody><tr><td colspan="7"></td></tr></tbody>',

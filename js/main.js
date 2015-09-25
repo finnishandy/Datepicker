@@ -1,11 +1,10 @@
 /**
  * Created by sakariruoho on 9/17/15.
  */
-$('#datepickah').datepicker({startView: 'decade', orientation: 'right', forceParse: false})
+$('#datepickah').datepicker({startView: 'decade', orientation: 'right', forceParse: false, autoclose: true})
     .on('changeDate', function (ev) {
         console.log("date changed" + pad(ev.date.getDate()));
         document.getElementById('date').setAttribute('value', pad(ev.date.getDate()));
-        $(this).datepicker('hide');
     })
     .on('changeYear', function (ev) {
         console.log("year changed: " + ev.date.getFullYear());

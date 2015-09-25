@@ -52,6 +52,11 @@ th { font-weight: normal; }
     vertical-align:middle;
   }
 
+  & table tr td span.old, & table tr td span.new {
+    background-color: $ws-datepicker-notinrange;
+    border-color: $ws-datepicker-notinrange;
+  }
+
   & table tr td span.active.active {
     color: $ws-datepicker-active-blue;
     background-color: #FFF;
@@ -60,7 +65,7 @@ th { font-weight: normal; }
 
   & table tr td span.active.active:hover {
     background-color: #FFF;
-    color: inherit;
+    color: $ws-datepicker-active-blue;
   }
 
   & table tr td span.active.active:before {
@@ -152,14 +157,6 @@ th { font-weight: normal; }
 }
 
 
-.datepicker>div>table>tbody {
-
-}
-
-.datepicker table tr td span.old, .datepicker table tr td span.new {
-  background-color: $ws-datepicker-notinrange;
-  border-color: $ws-datepicker-notinrange;
-}
 
 .chevron-common {
   content: '';

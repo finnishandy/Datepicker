@@ -27,13 +27,16 @@ th {
     border-top: 1px solid #E3EBEE;
     display: table-cell;
     vertical-align: middle; }
+  .datepicker table tr td span.old, .datepicker table tr td span.new {
+    background-color: #E3EBEE;
+    border-color: #E3EBEE; }
   .datepicker table tr td span.active.active {
     color: #00A9EC;
     background-color: #FFF;
     border: none; }
   .datepicker table tr td span.active.active:hover {
     background-color: #FFF;
-    color: inherit; }
+    color: #00A9EC; }
   .datepicker table tr td span.active.active:before {
     content: '';
     position: absolute;
@@ -95,10 +98,6 @@ th {
 
 .table-condensed > tbody > tr > td {
   padding: 0px; }
-
-.datepicker table tr td span.old, .datepicker table tr td span.new {
-  background-color: #E3EBEE;
-  border-color: #E3EBEE; }
 
 .chevron-common, .chevron:after, .chevron:before {
   content: '';

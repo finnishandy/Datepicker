@@ -3,8 +3,8 @@ body {
 
 .datepicker {
   width: 587px;
-  overflow: hidden;
-  border-radius: 0px; }
+  border-radius: 0px;
+  border-top: 1px solid #E3EBEE !important; }
 
 .datepicker-dropdown {
   padding: 0px; }
@@ -129,8 +129,11 @@ th {
   width: 2px;
   background: #00A9EC; }
 
-.chevron.next:before, .chevron.next:after {
+.chevron.prev:before, .chevron.prev:after {
   left: 25px; }
+
+.chevron.next:after, .chevron.next:before {
+  right: 25px; }
 
 .chevron.left:before, .chevron.right:after {
   -webkit-transform: skew(-45deg, 0deg);
@@ -154,10 +157,23 @@ th {
   width: 2px;
   background: #00A9EC; }
 
-.chevron.right.next:after, .chevron.right.next:before {
-  right: 25px; }
-
 .chevron {
   width: 83.85714px; }
+
+.datepicker-dropdown.datepicker-orient-bottom:after {
+  top: -9px; }
+
+.datepicker-dropdown:after {
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-bottom: 9px solid #fff; }
+
+.datepicker-dropdown.datepicker-orient-bottom:before {
+  top: -10px; }
+
+.datepicker-dropdown:before {
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #ccc; }
 
 /*# sourceMappingURL=ws-datepicker.css.map */

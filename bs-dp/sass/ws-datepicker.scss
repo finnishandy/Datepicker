@@ -1,6 +1,6 @@
 @import "mixin";
 
-$ws-datepicker-width: 580px;
+$ws-datepicker-width: 587px; // is divisible with 7
 $ws-datepicker-active-blue : #00A9EC;
 $ws-datepicker-hover-grey: #EEEEEE;
 $ws-datepicker-notinrange: #E3EBEE;
@@ -14,10 +14,16 @@ $ws-chevron-offset: $ws-chevron-side / $ws-chevron-height;
 
 // proportion in day view 84 /74
 
+body {
+  background-color: lightblue;
+}
+
+
+
 .datepicker {
   width: $ws-datepicker-width;
   overflow: hidden;
-
+  border-radius: 0px;
 }
 
 .datepicker-dropdown {
@@ -55,10 +61,20 @@ $ws-chevron-offset: $ws-chevron-side / $ws-chevron-height;
   border-radius: 0px;
   border-color: #E3EBEE;
   border-right: 1px solid #E3EBEE;
-  border-bottom: 1px solid #E3EBEE;
+  border-top: 1px solid #E3EBEE;
   display:table-cell;
   vertical-align:middle;
 }
+
+
+//TODO: nth-child is not supported on all the browsers
+.datepicker>div>table>tbody>tr>td>span:nth-child(4),
+.datepicker>div>table>tbody>tr>td>span:nth-child(8),
+.datepicker>div>table>tbody>tr>td>span:nth-child(12),
+.datepicker>div>table>tbody>tr>td>span:nth-child(16){
+  border-right: 0px;
+}
+
 .datepicker table tr td span.active.active {
   color: $ws-datepicker-active-blue;
   background-color: #FFF;
@@ -97,11 +113,17 @@ $ws-chevron-offset: $ws-chevron-side / $ws-chevron-height;
   vertical-align: middle;
   border-radius: 0px;
   margin: 0px;
+  /*
   margin-right: 1px;
   margin-bottom: 1px;
+  */
   border: 1px solid #E3EBEE;
   background-color: #FFF;
   position: relative;
+}
+
+.datepicker-days table tr td:nth-child(7) {
+  border-right: 0px;
 }
 
 .datepicker table tr td:hover {
@@ -132,19 +154,13 @@ $ws-chevron-offset: $ws-chevron-side / $ws-chevron-height;
 th { font-weight: normal; }
 
 
-
-.datepicker-days table {
-  margin-left: -1px;
-}
-
 .table-condensed>tbody>tr>td {
   padding: 0px;
 }
 
 
 .datepicker>div>table>tbody {
-  border-top: 1px solid #ECF4F6;
-  padding-top: 1px;
+
 }
 
 .datepicker table tr td span.old, .datepicker table tr td span.new {
@@ -152,23 +168,26 @@ th { font-weight: normal; }
   border-color: $ws-datepicker-notinrange;
 }
 
-.datepicker-dropdown {
-  padding: 1px;
-}
-
-
 .chevron {
   position: relative;
+  //width: $ws-datepicker-width / 7 !important;
 }
 
 .chevron:before {
   content: '';
   position: absolute;
   top: 50% - $ws-chevron-side;
-  right: $ws-chevron-offset;
+  //right: $ws-chevron-offset;
+
   height: $ws-chevron-side;
   width: $ws-chevron-width;
   background: $ws-chevron-color;
+}
+
+
+
+.chevron.next:before, .chevron.next:after {
+  left: 25px;
 }
 
 .chevron.left:before, .chevron.right:after {
@@ -185,9 +204,17 @@ th { font-weight: normal; }
   content: '';
   position: absolute;
   bottom: 50% - $ws-chevron-side;
-  right: $ws-chevron-offset;
+  //right: $ws-chevron-offset;
   height: $ws-chevron-side;
   width: $ws-chevron-width;
   background: $ws-chevron-color;
   //@include ws-skew(45deg);
+}
+
+.chevron.right.next:after, .chevron.right.next:before {
+  right: 25px;
+}
+
+.chevron {
+  width: $ws-datepicker-width / 7;
 }

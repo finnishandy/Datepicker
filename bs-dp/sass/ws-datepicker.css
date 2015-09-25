@@ -1,6 +1,10 @@
+body {
+  background-color: lightblue; }
+
 .datepicker {
-  width: 580px;
-  overflow: hidden; }
+  width: 587px;
+  overflow: hidden;
+  border-radius: 0px; }
 
 .datepicker-dropdown {
   padding: 0px; }
@@ -11,7 +15,7 @@
   border: none; }
 
 .datepicker > div {
-  width: 580px; }
+  width: 587px; }
 
 .datepicker > div > table {
   width: 100%; }
@@ -29,9 +33,15 @@
   border-radius: 0px;
   border-color: #E3EBEE;
   border-right: 1px solid #E3EBEE;
-  border-bottom: 1px solid #E3EBEE;
+  border-top: 1px solid #E3EBEE;
   display: table-cell;
   vertical-align: middle; }
+
+.datepicker > div > table > tbody > tr > td > span:nth-child(4),
+.datepicker > div > table > tbody > tr > td > span:nth-child(8),
+.datepicker > div > table > tbody > tr > td > span:nth-child(12),
+.datepicker > div > table > tbody > tr > td > span:nth-child(16) {
+  border-right: 0px; }
 
 .datepicker table tr td span.active.active {
   color: #00A9EC;
@@ -61,16 +71,21 @@
 
 .datepicker-days table tr td {
   width: 14.28571%;
-  height: 72.9932px;
-  line-height: 72.9932px;
+  height: 73.87415px;
+  line-height: 73.87415px;
   vertical-align: middle;
   border-radius: 0px;
   margin: 0px;
+  /*
   margin-right: 1px;
   margin-bottom: 1px;
+  */
   border: 1px solid #E3EBEE;
   background-color: #FFF;
   position: relative; }
+
+.datepicker-days table tr td:nth-child(7) {
+  border-right: 0px; }
 
 .datepicker table tr td:hover {
   background-color: #EEEEEE; }
@@ -96,22 +111,12 @@
 th {
   font-weight: normal; }
 
-.datepicker-days table {
-  margin-left: -1px; }
-
 .table-condensed > tbody > tr > td {
   padding: 0px; }
-
-.datepicker > div > table > tbody {
-  border-top: 1px solid #ECF4F6;
-  padding-top: 1px; }
 
 .datepicker table tr td span.old, .datepicker table tr td span.new {
   background-color: #E3EBEE;
   border-color: #E3EBEE; }
-
-.datepicker-dropdown {
-  padding: 1px; }
 
 .chevron {
   position: relative; }
@@ -120,10 +125,12 @@ th {
   content: '';
   position: absolute;
   top: 35%;
-  right: 0.5;
   height: 15%;
   width: 2px;
   background: #00A9EC; }
+
+.chevron.next:before, .chevron.next:after {
+  left: 25px; }
 
 .chevron.left:before, .chevron.right:after {
   -webkit-transform: skew(-45deg, 0deg);
@@ -143,9 +150,14 @@ th {
   content: '';
   position: absolute;
   bottom: 35%;
-  right: 0.5;
   height: 15%;
   width: 2px;
   background: #00A9EC; }
+
+.chevron.right.next:after, .chevron.right.next:before {
+  right: 25px; }
+
+.chevron {
+  width: 83.85714px; }
 
 /*# sourceMappingURL=ws-datepicker.css.map */
